@@ -1,0 +1,11 @@
+name: ${project.name}
+version: ${project.version}
+main: ${project.groupId}.${project.artifactId}.${project.name}
+description: |
+    ${project.description}
+depend: [Vault]
+commands:
+  placeholders:
+     description: Show placeholders
+     permission: placeholders.show
+     usage: /<command>
