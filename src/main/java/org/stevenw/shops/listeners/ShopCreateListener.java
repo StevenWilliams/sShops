@@ -3,6 +3,7 @@ package org.stevenw.shops.listeners;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.SignChangeEvent;
 import org.stevenw.shops.sShops;
@@ -20,14 +21,14 @@ public class ShopCreateListener implements Listener {
         this.buySign = ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("signs.buy-sign"));
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void onSignChange(SignChangeEvent e) {
         Player player = e.getPlayer();
         String[] lines = e.getLines();
         String signType = ChatColor.stripColor(lines[0]);
         if(signType.equals(ChatColor.stripColor(buySign))) {
             if(player.hasPermission("vulcan.signshops.create.buy")) {
-                if (BuyShop.exists(plugin, lines[1])) {
+                if (BuyShop.Companion.exists(plugin, lines[1])) {
                     e.setLine(0, buySign);
                     player.sendMessage(ChatColor.GOLD + "Successfully created a buy shop!");
                 } else {

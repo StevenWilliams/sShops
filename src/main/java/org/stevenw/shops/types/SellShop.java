@@ -21,12 +21,17 @@ public class SellShop extends Shop {
     }
 
     public boolean transact(ItemStack item) {
-        if(canTransact(item.getData())) {
-            Long money = getPrice(item.getData()) * item.getAmount();
-            if (economy.deposit(player, money)) {
-                player.sendMessage(plugin.getPrefix() + "Sold " + item.getAmount() + " " + item.getType().toString().toLowerCase().replace("_", " ") + " for $" + money);
+  //      plugin.getLogger().info("transact sell Item");
+        if( canTransactSell(item) ) {
+//            plugin.getLogger().info("canTransact Item");
+            Long money = getPriceSell(item) * item.getAmount();
+            String message = "Sold " + item.getAmount() + " " + item.getType().toString().toLowerCase().replace("_", " ") + " for $" + money;
+            if (getEconomy().deposit(getPlayer(), money, message)) {
+                getPlayer().sendMessage(getPlugin().getPrefix() + message);
                 item.setType(Material.AIR);
                 return true;
+            } else {
+                return false;
             }
         }
         return false;
@@ -34,8 +39,8 @@ public class SellShop extends Shop {
 
 
     public void open() {
-        Inventory inventory = Bukkit.createInventory(this.player, 27, INV_NAME + name);
-        this.player.openInventory(inventory);
+        Inventory inventory = Bukkit.createInventory(this.getPlayer(), 27, INV_NAME + getName());
+        this.getPlayer().openInventory(inventory);
     }
 
     public static boolean exists(sShops plugin, String shopName) {

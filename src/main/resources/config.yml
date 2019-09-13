@@ -6,6 +6,8 @@ signs:
   sell-sign: '&2[SELL]'
   price-sign: '&1[PRICE]'
 prefix: '&4Prison &c>> '
+use-new-api: true
+default-currency: default
 shops:
   buy:
     D:

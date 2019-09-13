@@ -3,9 +3,28 @@ version: ${project.version}
 main: ${project.groupId}.${project.artifactId}.${project.name}
 description: |
     ${project.description}
-depend: [Vault]
+depend: [Vault,VulcanEconomy]
+api-version: 1.13
 commands:
   placeholders:
      description: Show placeholders
      permission: placeholders.show
      usage: /<command>
+  shopsreload:
+    description: Reload shops config
+    aliases: [shopreload]
+    usage: /<command> [player]
+    permission: sShops.reload
+    permission-message: You don't have <permission>
+  shopsbuy:
+    description: Opens buy shop
+    aliases: [shopbuy,buyshop]
+    usage: /<command> [name]
+    permission: sShops.buy
+    permission-message: You don't have <permission>
+  shopssell:
+    description: Opens sell shop
+    aliases: [shopsell,sellshop]
+    usage: /<command> [name]
+    permission: sShops.sell
+    permission-message: You don't have <permission>
