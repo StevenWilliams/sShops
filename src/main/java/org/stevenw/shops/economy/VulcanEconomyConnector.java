@@ -88,6 +88,6 @@ public class VulcanEconomyConnector implements Economy {
         return vulcanAPI.getCurrency(getDefaultCurrencyKey()).getName();
     }
     public String getDefaultCurrencyKey() {
-        return plugin.getConfig().getString("default-currency");
+        return sShops.plugin.getConfig().getString("default-currency");
     }
 }

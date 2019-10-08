@@ -5,7 +5,6 @@ import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 import org.bukkit.material.MaterialData
-import org.stevenw.shops.ShopItem
 import org.stevenw.shops.Util
 import org.stevenw.shops.economy.Economy
 import org.stevenw.shops.sShops
@@ -13,9 +12,10 @@ import org.stevenw.shops.sShops
 import java.util.ArrayList
 import kotlin.concurrent.thread
 import kotlin.math.floor
-import kotlin.math.roundToInt
 import org.bukkit.Bukkit
-
+import org.stevenw.shops.items.CommandShopItem
+import org.stevenw.shops.items.ItemStackBuyItem
+import org.stevenw.shops.items.ShopItem
 
 
 //nothing yet, add it as an abstract class later.
@@ -35,6 +35,15 @@ abstract class Shop(protected var plugin: sShops, protected var economy: Economy
                    var price : Double;
                     var quantity : Int;
                     var currencyKey :String? = null
+                    if(materialName.startsWith(plugin.customPrefix)) {
+                        Material.valueOf(plugin.config.getString("shops.$type.$name.$materialName" +
+                                ".material"));
+                        //Util.getItem(plugin, "shops.$type.$name.$materialName", Material.valueOf(materialName), player)
+                        //var className = plugin.config.getString("shops.$type.$name
+                        // .$materialName" +
+                        //        ".class");
+                        //val newInstance = cls.newInstance();
+                    }
                     if(plugin.config.contains("shops.$type.$name.$materialName.price")) {
                         quantity = plugin.config.getInt("shops.$type.$name.$materialName.quantity", 1)
                          price =  plugin.config.getDouble("shops.$type.$name.$materialName.price")
@@ -43,27 +52,16 @@ abstract class Shop(protected var plugin: sShops, protected var economy: Economy
                          price = getPrice(MaterialData(Material.valueOf(materialName)))!!
                          quantity = 1;
                     }
-                    var itemStack = Util.getItem(plugin, "shops.$type.$name.$materialName", Material.valueOf(materialName), player)
-                    items.add(ShopItem(itemStack, price, false, quantity, currencyKey))
-                } else {
-                    val dataValues = plugin.config.getConfigurationSection("shops.$type.$name.$materialName").getKeys(false)
-                    for (dataValue in dataValues) {
-                        var price : Double;
-                        var quantity : Int = 1;
-                        var currencyKey :String? = null
+                    //todo use reflection
+                    if(plugin.config.getString("shops.$type.$name.$materialName.driver", "default") == "org.stevenw.shops.items.CommandShopItem") {
+                        var item = Util.getItem(plugin, "shops.$type.$name.$materialName", Material.valueOf(plugin.config.getString("shops.$type.$name.$materialName.material", "STONE")), player)
 
-                        if(plugin.config.contains("shops.$type.$name.$materialName.$dataValue.quantity")) {
-                            quantity = plugin.config.getInt("shops.$type.$name.$materialName.$dataValue.quantity", 1)
-                            price =  plugin.config.getDouble("shops.$type.$name.$materialName.$dataValue.price")
-                            currencyKey =  plugin.config.getString("shops.$type.$name.$materialName.$dataValue.currency")
+                        items.add(CommandShopItem(plugin.config.getConfigurationSection("shops.$type.$name.$materialName"), item, price, quantity, currencyKey!!))
 
-                        } else {
-                            price = getPrice(MaterialData(Material.valueOf(materialName), java.lang.Byte.valueOf(dataValue)!!))!!
+                    } else {
+                        var item = Util.getItem(plugin, "shops.$type.$name.$materialName", Material.valueOf(materialName), player)
 
-                        }
-                        var item = Util.getItem(plugin, "shops.$type.$name.$materialName.$dataValue", Material.valueOf(materialName), player)
-                        item.durability = java.lang.Short.valueOf(dataValue)
-                        items.add(ShopItem(item, price, true, quantity, currencyKey))
+                        items.add(ItemStackBuyItem(plugin.config.getConfigurationSection("shops.$type.$name.$materialName"), item, price, quantity, currencyKey))
                     }
                 }
             }

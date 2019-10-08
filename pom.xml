@@ -54,7 +54,7 @@
         <dependency>
             <groupId>com.github.StevenWilliams</groupId>
             <artifactId>VulcanEconomy</artifactId>
-            <version>ef1fdd34de</version>
+            <version>a01772c4c6</version>
         </dependency>
     </dependencies>
     <build>

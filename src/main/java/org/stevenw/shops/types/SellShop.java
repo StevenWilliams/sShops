@@ -24,9 +24,9 @@ public class SellShop extends Shop {
   //      plugin.getLogger().info("transact sell Item");
         if( canTransactSell(item) ) {
 //            plugin.getLogger().info("canTransact Item");
-            Long money = getPriceSell(item) * item.getAmount();
+            double money = getPriceSell(item) * item.getAmount();
             String message = "Sold " + item.getAmount() + " " + item.getType().toString().toLowerCase().replace("_", " ") + " for $" + money;
-            if (getEconomy().deposit(getPlayer(), money, message)) {
+            if (getEconomy().deposit(getPlayer(), (long) money, message)) {
                 getPlayer().sendMessage(getPlugin().getPrefix() + message);
                 item.setType(Material.AIR);
                 return true;

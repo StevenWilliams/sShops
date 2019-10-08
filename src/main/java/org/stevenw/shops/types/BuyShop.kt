@@ -3,10 +3,10 @@ package org.stevenw.shops.types
 import ninja.amp.ampmenus.menus.ItemMenu
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
-import org.stevenw.shops.ShopItem
 import org.stevenw.shops.economy.Economy
 import org.stevenw.shops.gui.BuyMenu
 import org.stevenw.shops.sShops
+import org.stevenw.shops.items.ShopItem
 import kotlin.math.floor
 
 class BuyShop(plugin: sShops, economy: Economy, name: String, player: Player) : Shop(plugin, economy, "buy", name, player) {
@@ -22,7 +22,7 @@ class BuyShop(plugin: sShops, economy: Economy, name: String, player: Player) : 
 
     @JvmOverloads
     fun transact(shopItem: ShopItem, useLegacy: Boolean = false): Boolean {
-        val price = floor(shopItem.price).toLong()
+        val price = floor(shopItem.price!!).toLong()
         val amount = shopItem.amount
         val message = "Bought " + amount + " " + shopItem.item.type.toString().toLowerCase().replace("_", " ") + " for $" + price!!.toString()
         val currencyKey = shopItem.currencyKey;

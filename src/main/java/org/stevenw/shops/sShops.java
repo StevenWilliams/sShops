@@ -5,6 +5,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.stevenw.shops.commands.BuyCommand;
 import org.stevenw.shops.commands.SellCommand;
+import org.stevenw.shops.economy.AsyncEconomy;
 import org.stevenw.shops.economy.Economy;
 import org.stevenw.shops.economy.VaultEconomy;
 import org.stevenw.shops.economy.VulcanEconomyConnector;
@@ -13,8 +14,10 @@ import org.stevenw.shops.listeners.ShopUseListener;
 
 public class sShops extends JavaPlugin {
     private Economy economy;
+    private AsyncEconomy asyncEconomy;
     public static boolean useNewMaterials = true;
     public static sShops plugin;
+    private String customPrefix;
     @Override
     public void onEnable() {
         this.saveDefaultConfig();
@@ -25,8 +28,10 @@ public class sShops extends JavaPlugin {
         this.getCommand("shopssell").setExecutor(new SellCommand(this));
 
         this.economy = new VulcanEconomyConnector(this); //new VaultEconomy(this);
+        this.asyncEconomy = new AsyncEconomy(this);
         useNewMaterials = this.getConfig().getBoolean("use-new-api", true);
         plugin = this;
+        customPrefix = this.getConfig().getString("custom-prefix", "VCUSTOM");
     }
     @Override
     public void onDisable() {
@@ -37,5 +42,13 @@ public class sShops extends JavaPlugin {
     }
     public Economy getEconomy() {
         return this.economy;
+    }
+
+    public String getCustomPrefix() {
+        return customPrefix;
+    }
+
+    public AsyncEconomy getAsyncEconomy() {
+        return asyncEconomy;
     }
 }

@@ -1,13 +1,11 @@
 package org.stevenw.shops.gui;
 
 import ninja.amp.ampmenus.menus.ItemMenu;
-import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.stevenw.shops.ShopItem;
+import org.stevenw.shops.items.ShopItem;
 import org.stevenw.shops.types.BuyShop;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BuyMenu extends ItemMenu {
@@ -24,12 +22,7 @@ public class BuyMenu extends ItemMenu {
                 int amount = shopItem.getAmount();
                 item.setAmount(amount);
 
-                String lore;
-                if(amount == 1) {
-                 lore=   "Price: " + price.toString() + " " + shopItem.getCurrencyName();
-                } else {
-                    lore =  "Price: " + price.toString() + " " + shopItem.getCurrencyName() + " for " + amount;
-                }
+                String lore =  shopItem.getLore();
 
                 setItem(pos, new BuyMenuItem(shop, item.getItemMeta().getDisplayName(), item, lore, this, price, shopItem, item1));
             }
