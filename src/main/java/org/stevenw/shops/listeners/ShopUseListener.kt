@@ -77,11 +77,7 @@ class ShopUseListener(private val plugin: sShops) : Listener {
                         shop.open()
                     } else if (player.gameMode != GameMode.CREATIVE) {
                         e.isCancelled = true
-                        if (shop.canTransactSell(player.itemInHand)!!) {
-                            player.sendMessage(plugin.prefix + "Sell this for $" + shop.getPriceSell(player.itemInHand))
-                        } else {
-                            player.sendMessage(plugin.prefix + "You cannot sell this.")
-                        }
+                        shop.handlePriceCheck();
                     }
                 } else if (lines[0] == buySign && BuyShop.exists(plugin, lines[1])) {
                     if (action == Action.RIGHT_CLICK_BLOCK) {

@@ -37,6 +37,17 @@ public class SellShop extends Shop {
         return false;
     }
 
+    /**
+     *
+     * Checks price of current item in hand
+     */
+    public void handlePriceCheck() {
+        if (this.canTransactSell(getPlayer().getItemInHand())) {
+            getPlayer().sendMessage(this.getPlugin().getPrefix() + "Sell this for $" + this.getPriceSell(getPlayer().getItemInHand()));
+        } else {
+            getPlayer().sendMessage(getPlugin().getPrefix() + "You cannot sell this.");
+        }
+    }
 
     public void open() {
         Inventory inventory = Bukkit.createInventory(this.getPlayer(), 27, INV_NAME + getName());

@@ -4,6 +4,8 @@ main: ${project.groupId}.${project.artifactId}.${project.name}
 description: |
     ${project.description}
 depend: [Vault,VulcanEconomy]
+softdepend:
+  - Citizens
 api-version: 1.13
 commands:
   placeholders:
