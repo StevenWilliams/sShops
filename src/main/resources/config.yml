@@ -1,0 +1,197 @@
+# Signs
+# [BUY/SELL/PRICE]
+# Shopname
+signs:
+  buy-sign: '&4<BUY>'
+  sell-sign: '&2<SELL>'
+prefix: '&9&lLares Prison &7&l>> &b'
+custom-prefix: 'VCUSTOM'
+default-currency: 'default'
+shops:
+  buy:
+    D:
+      IRON_INGOT: 
+        price: 24
+      COAL: 
+        price: 17
+      BREAD:
+        quantity: 10
+        price: 80
+      COOKIE:
+        quantity: 5
+        price: 10
+      BIRCH_LOG:
+        price: 8
+      DIAMOND: 
+        price: 350
+    C:
+      IRON_INGOT:
+        price: 24
+      COAL: 
+        price: 16
+      BREAD:
+        quantity: 10
+        price: 80
+      DIAMOND: 
+        price: 300
+      LAPIS_LAZULI: 
+        price: 150
+    Enchanting:
+      LAPIS_LAZULI: 
+        price: 150
+    Donor:
+      DIAMOND_SHOVEL:
+        price: 50000
+        quantity: 1
+        enchantments:
+          DIG_SPEED: 5
+    SecretShop:
+      APPLE: 
+        price: 250000
+    Donor2Secret:
+      DIAMOND_PICKAXE:
+        price: 250000
+        quantity: 1
+        enchantments:
+          LOOT_BONUS_BLOCKS: 3
+          DIG_SPEED: 5
+          DURABILITY: 3
+    TokenShop:
+      APPLE:
+        price: 5
+        quantity: 1
+        currency: tokens
+      GOLDEN_PICKAXE:
+        price: 50
+        quantity: 1
+        currency: tokens
+        enchantments:
+          DIG_SPEED: 6
+          DURABILITY: 1337
+      BOW:
+        price: 100
+        quantity: 1
+        currency: tokens
+      ENCHANTED_BOOK:
+        price: 150
+        quantity: 1
+        currency: tokens
+        enchantments:
+          MENDING: 1
+      ENCHANTED_BOOK:
+        price: 150
+        quantity: 1
+        currency: tokens
+        enchantments:
+          DIG_SPEED: 6
+
+  sell:
+    Shop:
+      COBBLESTONE: 1
+      TERRACOTTA: 1
+      NETHER_BRICKS: 2
+      SNOW_BLOCK: 1
+      CLAY: 1
+      SANDSTONE: 1
+      SOUL_SAND: 1
+      STONE: 2
+      IRON_ORE: 8
+      IRON_INGOT: 12
+      COAL_ORE: 25
+      COAL: 8
+      BIRCH_LOG: 4
+      ACACIA_LOG: 8
+      BIRCH_LEAVES: 6
+      ACACIA_LEAVES: 12
+      BIRCH_SAPLING: 12
+      ACACIA_SAPLING: 24
+      BIRCH_PLANKS: 1
+      ACACIA_PLANKS: 2
+      SPRUCE_LOG: 12
+      SPRUCE_LEAVES: 18
+      SPRUCE_SAPLING: 36
+      SPRUCE_PLANKS: 3
+      JUNGLE_LOG: 16
+      JUNGLE_LEAVES: 24
+      JUNGLE_SAPLING: 48
+      JUNGLE_PLANKS: 4
+      DARK_OAK_LOG: 20
+      DARK_OAK_LEAVES: 30
+      DARK_OAK_SAPLING: 60
+      DARK_OAK_PLANKS: 5
+      OAK_LOG: 24
+      OAK_LEAVES: 36
+      OAK_SAPLING: 72
+      OAK_PLANKS: 6
+      STRIPPED_BIRCH_LOG: 6
+      STRIPPED_ACACIA_LOG: 12
+      STRIPPED_SPRUCE_LOG: 18
+      STRIPPED_JUNGLE_LOG: 24
+      STRIPPED_DARK_OAK_LOG: 30
+      STRIPPED_OAK_LOG: 36
+      APPLE: 100
+      GOLD_ORE: 12
+      GOLD_INGOT: 24
+      SOUL_SAND: 1
+      LAPIS_LAZULI: 3
+      LAPIS_ORE: 35
+      LAPIS_BLOCK: 27
+      COAL_BLOCK: 75
+      IRON_BLOCK: 108
+      GLOWSTONE_DUST: 2
+      GLOWSTONE: 8
+      DIAMOND: 70
+      DIAMOND_BLOCK: 630
+      EMERALD_BLOCK: 765
+      GOLD_BLOCK: 216
+      EMERALD: 85
+      REDSTONE: 6
+      REDSTONE_BLOCK: 55
+      MOSSY_COBBLESTONE: 75
+      QUARTZ_ORE: 15
+      QUARTZ: 30
+      QUARTZ_BLOCK: 60
+      BROWN_MUSHROOM: 2
+      RED_MUSHROOM: 10
+      BROWN_MUSHROOM_BLOCK: 8
+      RED_MUSHROOM_BLOCK: 16
+      PORKCHOP: 10
+      COOKED_PORKCHOP: 20
+    D-SecretShop:
+      IRON_INGOT: 15
+      COAL: 10
+      DIAMOND: 87.5
+      BIRCH_SAPLING: 15
+      ACACIA_SAPLING: 30
+      COAL_BLOCK: 90
+      DIAMOND_BLOCK: 787.5
+      IRON_BLOCK: 135
+      EMERALD: 106.25
+      EMERALD_BLOCK: 956.25
+      GOLD_INGOT: 30
+      GOLD_BLOCK: 270
+      LAPIS_LAZULI: 3.75
+      LAPIS_BLOCK: 33.75
+      REDSTONE: 7.5
+      REDSTONE_BLOCK: 67.5
+      QUARTZ: 37.5
+      QUARTZ_BLOCK: 75
+      GLOWSTONE: 10
+      GLOWSTONE_DUST: 2.5
+    SecretShop:
+      IRON_INGOT: 20
+      COAL: 14
+      APPLE: 250
+      GOLD_INGOT: 42
+      LAPIS_LAZULI: 5
+      DIAMOND: 135
+      EMERALD: 200
+      REDSTONE: 12
+      QUARTZ: 155
+      IRON_BLOCK: 180
+      GOLD_BLOCK: 378
+      DIAMOND_BLOCK: 1215
+      EMERALD_BLOCK: 1800
+      REDSTONE_BLOCK: 108
+      LAPIS_BLOCK: 50
+      COAL_BLOCK: 126
